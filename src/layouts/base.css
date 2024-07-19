@@ -1,0 +1,31 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0; /* Remove the margin in all browsers. */
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+*,
+::before,
+::after {
+  border-width: 0;
+  border-style: solid;
+}
+
+:root {
+  --color-gray-100: #f3f4f6;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-red-500: #ef4444;
+  --stabila-brand-color: #ffd861;
+}

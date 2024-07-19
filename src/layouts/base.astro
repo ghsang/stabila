@@ -1,0 +1,95 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import "./base.css";
+---
+
+<style>
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  header {
+    position: fixed;
+    top: 0;
+    will-change: transform;
+    transition: transform 0.3s;
+    transform: translateY(0);
+    z-index: 1;
+    background-color: white;
+    height: 8vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+  }
+
+  img {
+    height: 8vh;
+  }
+
+  @supports (height: 8svh) {
+    header {
+      height: 8svh;
+    }
+    
+    img {
+      height: 8svh;
+    }
+  }
+
+  .slot {
+    padding-top: 8svh;
+  }
+</style>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <ViewTransitions />
+  </head>
+  <body>
+    <header>
+      <a href="/">
+        <img
+          class="cta__brand-logo"
+          src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/63b115e3-ce94-4465-85b2-08ea70db3200/360x200"
+        />
+      </a>
+    </header>;
+    <div class="slot">
+      <slot />
+    </div>
+  </body>
+</html>
+
+<script>
+  let ticking = false;
+  let lastScrollTop = window.scrollY;
+
+  const header = document.querySelector("header");
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (ticking === false) {
+        requestAnimationFrame(() => {
+          if (window.scrollY > lastScrollTop) {
+            header!.style.transform = "translateY(-100%)";
+          } else {
+            header!.style.transform = "translateY(0)";
+          }
+
+          lastScrollTop = window.scrollY;
+
+          ticking = false;
+        });
+      }
+
+      ticking = true;
+    },
+    { passive: true },
+  );
+</script>

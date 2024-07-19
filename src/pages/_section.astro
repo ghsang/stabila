@@ -1,0 +1,137 @@
+---
+interface Props {
+	src: string;
+	srcset?: string;
+	events: {
+		year: string;
+		description: string;
+	}[];
+	markers?: boolean;
+}
+
+const { src, srcset, events, markers = false } = Astro.props;
+---
+<style>
+	.section {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.background {
+		object-fit: cover;
+		z-index: -1;
+	}
+
+	.description {
+		position: sticky;
+		top: 0;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		background-color: white;;
+		padding: 1rem;
+	}
+
+	.year {
+		color: transparent;
+		width: 4ch;
+		white-space: nowrap;
+		overflow: hidden;
+		font-size: 3rem;
+		font-weight: 800;
+	}
+
+	.typewrite {
+		text-align: center;
+		border-right: 3px solid;
+		animation: 
+			typing 0.5s steps(4), 
+			blink .5s step-end forwards alternate;
+	}
+
+	@keyframes typing {
+		from { width: 0 }
+	}
+
+	@keyframes blink {
+		0%, 100% { 
+			border-color: transparent;
+			color: var(--stabila-brand-color);
+		}
+		50% { border-color: var(--stabila-brand-color) }
+	}
+
+	.paragraph {
+		opacity: 0;
+		transform: translateY(1rem);
+	}
+
+	.paragraph--appear {
+		animation: appear 0.5s ease-in-out forwards;
+	}
+
+	@keyframes appear {
+		to {
+			opacity: 100;
+			transform: translateY(0);
+		}
+	}
+
+	.event {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		row-gap: 1rem;
+		padding-top: 2rem;
+	}
+
+	.description > .event + .event {
+		margin-top: 3rem;
+	}
+</style>
+
+<handle-appear>
+	<section class="section">
+		<div class="description">
+			{events.map(event => (
+				<div class="event">
+						<div class="year typewrite">{event.year}</div>
+						<p class="paragraph paragraph--appear">{event.description}</p>
+				</div>
+			))}
+		</div>
+		<img
+			class="background"
+			src={src}
+			srcset={srcset}
+			sizes="100vw"
+			decoding="async"
+			loading="lazy"
+		>
+		</img>
+	</section>
+</handle-appear>
+
+<script>
+	import gsap from 'gsap';
+	import ScrollTrigger from 'gsap/ScrollTrigger';
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	class Appear extends HTMLElement {
+		constructor() {
+			super();
+		}
+
+		connectedCallback() {
+		}
+	}
+
+	if (!customElements.get('handle-appear')) {
+		customElements.define('handle-appear', Appear);
+	}
+	
+</script>
