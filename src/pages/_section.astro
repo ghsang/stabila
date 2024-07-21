@@ -6,22 +6,15 @@ interface Props {
 		year: string;
 		description: string;
 	}[];
-	markers?: boolean;
 }
 
-const { src, srcset, events, markers = false } = Astro.props;
+const { src, srcset, events } = Astro.props;
 ---
 <style>
 	.section {
-		position: relative;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-	}
-
-	.background {
-		object-fit: cover;
-		z-index: -1;
 	}
 
 	.description {
@@ -31,53 +24,12 @@ const { src, srcset, events, markers = false } = Astro.props;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		background-color: white;;
+		background-color: white;
 		padding: 1rem;
 	}
 
-	.year {
-		color: transparent;
-		width: 4ch;
-		white-space: nowrap;
-		overflow: hidden;
-		font-size: 3rem;
-		font-weight: 800;
-	}
-
-	.typewrite {
-		text-align: center;
-		border-right: 3px solid;
-		animation: 
-			typing 0.5s steps(4), 
-			blink .5s step-end forwards alternate;
-	}
-
-	@keyframes typing {
-		from { width: 0 }
-	}
-
-	@keyframes blink {
-		0%, 100% { 
-			border-color: transparent;
-			color: var(--stabila-brand-color);
-		}
-		50% { border-color: var(--stabila-brand-color) }
-	}
-
-	.paragraph {
-		opacity: 0;
-		transform: translateY(1rem);
-	}
-
-	.paragraph--appear {
-		animation: appear 0.5s ease-in-out forwards;
-	}
-
-	@keyframes appear {
-		to {
-			opacity: 100;
-			transform: translateY(0);
-		}
+	.description > .event + .event {
+		margin-top: 3rem;
 	}
 
 	.event {
@@ -88,8 +40,19 @@ const { src, srcset, events, markers = false } = Astro.props;
 		padding-top: 2rem;
 	}
 
-	.description > .event + .event {
-		margin-top: 3rem;
+	.year {
+		color: var(--stabila-brand-color);
+		border-right: 3px solid var(--stabila-brand-color);
+		width: 4ch;
+		white-space: nowrap;
+		overflow: hidden;
+		font-size: 3rem;
+		font-weight: 800;
+	}
+
+	img {
+		height: 30vh;
+		object-fit: contain;
 	}
 </style>
 
@@ -98,8 +61,8 @@ const { src, srcset, events, markers = false } = Astro.props;
 		<div class="description">
 			{events.map(event => (
 				<div class="event">
-						<div class="year typewrite">{event.year}</div>
-						<p class="paragraph paragraph--appear">{event.description}</p>
+						<div class="year">{event.year}</div>
+						<p class="paragraph">{event.description}</p>
 				</div>
 			))}
 		</div>
@@ -127,6 +90,33 @@ const { src, srcset, events, markers = false } = Astro.props;
 		}
 
 		connectedCallback() {
+			const events = this.querySelectorAll('.event');
+
+
+			events.forEach(event => {
+				gsap.timeline({
+					scrollTrigger: {
+						trigger: event,
+						start: 'top 80%',
+						end: 'bottom 20%',
+					},
+				})
+					.from(event.querySelector('.year'), {
+						width: 0,
+						ease: "steps(4)",
+						duration: 0.6,
+					})
+					.to(event.querySelector('.year'), 
+						{ borderColor: 'transparent', duration: .15, repeat: 2, ease: "none"}, 
+						"0"
+					)
+					.from(event.querySelector('.paragraph'), {
+						opacity: 0,
+						y: '1rem',
+						duration: 1,
+					});
+					
+			});
 		}
 	}
 
