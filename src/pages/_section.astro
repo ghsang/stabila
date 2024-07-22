@@ -41,7 +41,8 @@ const { events } = Astro.props;
 	.year {
 		color: var(--stabila-brand-color);
 		border-right: 3px solid var(--stabila-brand-color);
-		width: 4ch;
+		width: 0;
+		text-align: center;
 		white-space: nowrap;
 		overflow: hidden;
 		font-size: 3rem;
@@ -86,8 +87,8 @@ const { events } = Astro.props;
 						end: 'bottom 20%',
 					},
 				})
-					.from(event.querySelector('.year'), {
-						width: 0,
+					.to(event.querySelector('.year'), {
+						width: '4ch',
 						ease: "steps(4)",
 						duration: 0.6,
 					})
