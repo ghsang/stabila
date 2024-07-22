@@ -1,14 +1,12 @@
 ---
 interface Props {
-	src: string;
-	srcset?: string;
 	events: {
 		year: string;
 		description: string;
 	}[];
 }
 
-const { src, srcset, events } = Astro.props;
+const { events } = Astro.props;
 ---
 <style>
 	.section {
@@ -49,11 +47,6 @@ const { src, srcset, events } = Astro.props;
 		font-size: 3rem;
 		font-weight: 800;
 	}
-
-	img {
-		height: 30vh;
-		object-fit: contain;
-	}
 </style>
 
 <handle-appear>
@@ -66,15 +59,7 @@ const { src, srcset, events } = Astro.props;
 				</div>
 			))}
 		</div>
-		<img
-			class="background"
-			src={src}
-			srcset={srcset}
-			sizes="100vw"
-			decoding="async"
-			loading="lazy"
-		>
-		</img>
+		<slot></slot>
 	</section>
 </handle-appear>
 
@@ -123,5 +108,4 @@ const { src, srcset, events } = Astro.props;
 	if (!customElements.get('handle-appear')) {
 		customElements.define('handle-appear', Appear);
 	}
-	
 </script>

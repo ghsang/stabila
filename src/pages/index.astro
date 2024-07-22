@@ -56,6 +56,57 @@ import Section from './_section.astro';
 		max-width: 760px;
 		padding: 2rem 1rem;
 	}
+
+	img {
+		object-fit: contain;
+		width: 100vw;
+	}
+
+	.finish img {
+		width: min(300px, 100vw);
+	}
+
+	@media (min-width: 640px) {
+		.ar-1x1 {
+			width: 40vw;
+		}
+	}
+
+	.ar-760x384 {
+		aspect-ratio: 760 / 384;
+		width: min(760px, 100vw);
+	}
+
+	.ar-1000x700 {
+		object-fit: cover;
+		aspect-ratio: 1000 / 773;
+		width: min(1000px, 100vw);
+	}
+
+	.ar-1200x516 {
+		aspect-ratio: 1200 / 516;
+		width: min(1200px, 100vw);
+	}
+
+	.ar-760x319 {
+		aspect-ratio: 760 / 319;
+		width: min(760px, 100vw);
+	}
+
+	.ar-1920x1013 {
+		aspect-ratio: 1920 / 1013;
+		width: min(1920px, 100vw);
+	}
+
+	.ar-2000x2000 {
+		aspect-ratio: 2000 / 2000;
+		width: min(600px, 100vw);
+	}
+
+	.ar-300x150 {
+		aspect-ratio: 300 / 150;
+		width: min(300px, 100vw);
+	}
 </style>
 
 <Layout>
@@ -64,41 +115,72 @@ import Section from './_section.astro';
 	</iframe>
 	<h1 id="title">130년이 넘는 혁신의 역사</h1>
 	<Section 
-		src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/75779980-7aea-4f0b-0172-0a5dfb335300/760x384"
 		events={[{
 			year: '1865',
 			description: '스타빌라 창립자 구스타프 울리히(Gustav Ullrich)의 삼촌 안톤 울리히(Anton Ullrich)가 접이식 자를 생산하기 시작했습니다. 이때 만들어진 접이식 자 중 하나는 여전히 스타빌라가 보유하고 있습니다.'
 		}]}
-	/>
+	>
+		<img
+			class="ar-760x384"
+			src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/75779980-7aea-4f0b-0172-0a5dfb335300/760x384"
+			sizes="100vw"
+			decoding="async"
+			loading="lazy"
+		>
+		</img>
+	</Section>
 	<Section
-		src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/b7e2151a-49cf-4f89-7685-f8e588a51b00/1920x773"
 		events={[
 			{
 				year: '1886',
 				description: '안톤 울리히(Anton Ullrich)와 그의 형제 프란츠(Franz)는 접이식 자의 스프링 장착 관절에 대한 특허를 받았습니다. 이는 우리가 오늘날 알고 있는 접이식 자가 탄생한 날짜를 알리는 신호입니다.'
 			},
 		]}
-	/>
+	>
+		<img
+			class="ar-1000x700"
+			src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/b7e2151a-49cf-4f89-7685-f8e588a51b00/1920x773"
+			sizes="100vw"
+			decoding="async"
+			loading="lazy"
+		>
+		</img>
+	</Section>
 	<Section
-		src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/378547c9-b8f8-4953-9e83-a59dceef3700/1200x516"
 		events={[
 			{
 				year: '1901',
 				description: '20세기 초에 이미 구스타프 울리히 마스슈타브파브리크(Gustav Ullrich Maßstabsfabrik) 측정 도구 공장은 다양한 측정 기구를 공급하고 있었습니다.'
 			}
 		]}
-	/>
+	>
+		<img
+			class="ar-1200x516"
+			src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/378547c9-b8f8-4953-9e83-a59dceef3700/1200x516"
+			sizes="100vw"
+			decoding="async"
+			loading="lazy"
+		>
+		</img>
+	</Section>
 	<Section
-		src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/c7cd565f-5244-46e2-f730-faf899538f00/760x319"
 		events={[
 			{
 				year: '1929',
 				description: '스타빌라 브랜드 등록'
 			}
 		]}
-	/>
+	>
+		<img
+			class="ar-760x319"
+			src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/c7cd565f-5244-46e2-f730-faf899538f00/760x319"
+			sizes="100vw"
+			decoding="async"
+			loading="lazy"
+		>
+		</img>
+	</Section>
 	<Section
-		src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/4c362cec-de38-4acc-829e-f3f3c8e3df00/1920x1013"
 		events={[
 			{
 				year: '1945',
@@ -109,99 +191,187 @@ import Section from './_section.astro';
 				description: '스타빌라는 아크릴 유리 방울의 특허를 확보하고, 경금속 수평기를 생산하는 최초의 독일 측정 도구 제조업체가 되었습니다.'
 			}
 		]}
-	/>
+	>
+		<img
+			class="ar-1920x1013"
+			src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/4c362cec-de38-4acc-829e-f3f3c8e3df00/1920x1013"
+			sizes="100vw"
+			decoding="async"
+			loading="lazy"
+		>
+		</img>
+	</Section>
 	<Section
-		src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/74a23037-6424-4eff-d8c1-3261d1d54100/2000x2000"
 		events={[
 			{
 				year: '1954',
 				description: '스타빌라는 유리 섬유 줄자를 발명했습니다.'
 			},
 		]}
-	/>
+	>
+		<img
+			class="ar-2000x2000"
+			src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/74a23037-6424-4eff-d8c1-3261d1d54100/2000x2000"
+			sizes="100vw"
+			decoding="async"
+			loading="lazy"
+		>
+		</img>
+	</Section>
 	<Section
-		src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/36eb1ba4-70b8-4d71-1bb1-6b76fc5c4800/2000x2000"
 		events={[
 			{
 				year: '1979',
 				description: '오늘날에도 여전히 비교 불가능한 특허를 통해 수평기에 평생 정확성을 부여합니다. 스타빌라는 프로파일 몸체에 바이알을 완전히 고정하여 충격으로부터 보호합니다(LOCKED VIALS).'
 			}
 		]}
-	/>
+	>
+		<img
+			class="ar-2000x2000"
+			src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/36eb1ba4-70b8-4d71-1bb1-6b76fc5c4800/2000x2000"
+			sizes="100vw"
+			decoding="async"
+			loading="lazy"
+		>
+		</img>
+	</Section>
 	<Section
-		src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/e8c5cc71-d672-407c-5dfe-d512edfba700/760x384"
 		events={[
 			{
 				year: '1994',
 				description: '스타빌라는 레이저 측정 장비를 도입하여 디지털 시대를 열었습니다.'
 			}
 		]}
-	/>
+	>
+		<img
+			class="ar-760x384"
+			src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/e8c5cc71-d672-407c-5dfe-d512edfba700/760x384"
+			sizes="100vw"
+			decoding="async"
+			loading="lazy"
+		>
+		</img>
+	</Section>
 	<Section
-		src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/27d2a95b-72c0-4722-1b74-cb52dd6b2900/760x384"
 		events={[
 			{
 				year: '1999',
 				description: '충격에 강한 자동 수평 기술의 도입으로 라인 레이저의 빠르고 쉬운 측정이 가능해졌으며, 이는 스타빌라의 전형적인 영구적 정밀성을 제공합니다.'
 			}
 		]}
-	/>
+	>
+		<img
+			class="ar-760x384"
+			src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/27d2a95b-72c0-4722-1b74-cb52dd6b2900/760x384"
+			sizes="100vw"
+			decoding="async"
+			loading="lazy"
+		>
+		</img>
+	</Section>
 	<Section
-		src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/b2d9dd20-47ce-4f3f-9dce-1b9f50713500/760x384"
 		events={[
 			{
 				year: '2006',
 				description: '특허받은 스타빌라 프로텍터 시스템은 회전 레이저가 넘어져도 신뢰할 수 있게 보호합니다.'
 			}
 		]}
-	/>
+	>
+		<img
+			class="ar-760x384"
+			src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/b2d9dd20-47ce-4f3f-9dce-1b9f50713500/760x384"
+			sizes="100vw"
+			decoding="async"
+			loading="lazy"
+		>
+		</img>
+	</Section>
 	<Section
-		src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/27de6ceb-6d4b-454a-cb95-368377a73f00/760x384"
 		events={[
 			{
 				year: '2010',
 				description: '스타빌라는 건설 현장 응용 분야에서 새로운 기준을 설정하는 방진 및 방수 전자 모듈을 수평기에 탑재하여 개발했습니다.'
 			}
 		]}
-	/>
+	>
+		<img
+			class="ar-760x384"
+			src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/27de6ceb-6d4b-454a-cb95-368377a73f00/760x384"
+			sizes="100vw"
+			decoding="async"
+			loading="lazy"
+		>
+		</img>
+	</Section>
 	<Section
-		src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/8a882e59-4da8-4255-7ad7-9a6b9931d500/760x384"
 		events={[
 			{
 				year: '2013',
 				description: '스타빌라는 혁신적인 새로운 수평기 디자인을 공개했습니다. 특허받은 알루미늄 R-프로파일 형태는 많은 작업자들이 원하는 견고함, 안정성, 그립감 및 수평기로 마킹하는 옵션을 결합하였습니다.'
 			}
 		]}
-	/>
+	>
+		<img
+			class="ar-760x384"
+			src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/8a882e59-4da8-4255-7ad7-9a6b9931d500/760x384"
+			sizes="100vw"
+			decoding="async"
+			loading="lazy"
+		>
+		</img>
+	</Section>
 	<Section
-		src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/47b064cc-b21e-46f4-079c-2180f3473100/1920x1013"
 		events={[
 			{
 				year: '2017',
 				description: '스타빌라의 혁신적인 모션 컨트롤 기능은 모든 측정 작업을 더 쉽고, 빠르며, 효과적으로 만듭니다.'
 			}
 		]}
-	/>
+	>
+		<img
+			class="ar-1920x1013"
+			src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/47b064cc-b21e-46f4-079c-2180f3473100/1920x1013"
+			sizes="100vw"
+			decoding="async"
+			loading="lazy"
+		>
+		</img>
+	</Section>
 	<Section
-		src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/ee59693f-3674-4bd2-36d6-4ae9e9de4000/760x384"
 		events={[
 			{
 				year: '2018',
 				description: '스타빌라는 TECH 700 DA로 전자 제품 라인을 확장하고 있습니다. 3 in 1: 디지털 전자 각도 측정기, 수평기, 경사 측정기.'
 			}
 		]}
-	/>
+	>
+		<img
+			class="ar-760x384"
+			src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/ee59693f-3674-4bd2-36d6-4ae9e9de4000/760x384"
+			sizes="100vw"
+			decoding="async"
+			loading="lazy"
+		>
+		</img>
+	</Section>
 	<Section
-		src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/9de9062f-e046-4f4b-9275-a0e7013cb400/1920x1013"
 		events={[
 			{
 				year: '2019',
 				description: '스타빌라는 데이터 측정, 데이터 분석, 데이터 전송 분야의 산업용 응용을 위한 전자 측정 도구를 처음으로 시장에 출시하고 있습니다.'
 			}
 		]}
-	/>
+	>
+		<img
+			class="ar-1920x1013"
+			src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/9de9062f-e046-4f4b-9275-a0e7013cb400/1920x1013"
+			sizes="100vw"
+			decoding="async"
+			loading="lazy"
+		>
+		</img>
+	</Section>
 	<Section
-		src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/a14f3a53-8f1c-4c94-e801-df3516ee3300/760x384"
 		events={[
 			{
 				year: '2020',
@@ -213,10 +383,20 @@ import Section from './_section.astro';
 				description: '독일 팔츠 지역의 하우엔슈타인-빌가르트스비젠에 새로운 물류 센터 건설을 위해 1,500만 유로가 투자되었습니다.'
 			}
 		]}
-	/>
+	>
+		<img
+			class="ar-760x384"
+			src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/a14f3a53-8f1c-4c94-e801-df3516ee3300/760x384"
+			sizes="100vw"
+			decoding="async"
+			loading="lazy"
+		>
+		</img>
+	</Section>
 	<div class="finish">
 		<h2 class="finish__head">현재</h2>
 		<img
+			class="ar-300x150"
 			src="https://imagedelivery.net/Hc0t1QE1bWW7v68fi2RYIA/ca6f8776-104c-43bf-5cee-1adb86a44900/300x150"
 			decoding="async"
 			loading="lazy"
